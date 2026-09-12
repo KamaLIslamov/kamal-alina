@@ -20,7 +20,11 @@
   --script: 'Marck Script', cursive;
   --sans: 'Jost', system-ui, sans-serif;
 
-  --pad: clamp(20px, 5cqw, 72px);
+  /* viewport-fit=cover растягивает страницу под скруглённые углы и вырез,
+     поэтому боковой отступ не должен быть меньше безопасной зоны. */
+  --pad: max(clamp(20px, 5cqw, 72px), env(safe-area-inset-left), env(safe-area-inset-right));
+  --safe-top: env(safe-area-inset-top);
+  --safe-bottom: env(safe-area-inset-bottom);
   --ease: cubic-bezier(.2, .7, .2, 1);
 }
 
@@ -276,7 +280,7 @@ input::placeholder, textarea::placeholder { color: rgba(242, 236, 228, .4); }
   color: var(--cream);
   display: grid;
   grid-template-rows: auto 1fr auto;
-  padding: 28px var(--pad) 32px;
+  padding: calc(28px + var(--safe-top)) var(--pad) calc(32px + var(--safe-bottom));
   box-sizing: border-box;
 }
 
@@ -381,6 +385,9 @@ input::placeholder, textarea::placeholder { color: rgba(242, 236, 228, .4); }
   flex-direction: column;
   align-items: center;
   line-height: 1;
+  /* На всю ширину: иначе блок сжимается по длине имени, линии у «и»
+     выходят короче полосы открытия и в момент подмены видно рывок. */
+  width: 100%;
 }
 .names .clip { display: block; overflow: hidden; padding: .06em .2em 0; }
 .names .clip.first { align-self: flex-start; margin-left: clamp(0px, 6cqw, 120px); }
@@ -1047,7 +1054,7 @@ input::placeholder, textarea::placeholder { color: rgba(242, 236, 228, .4); }
 /* -------------------------------------------------------------- footer --- */
 
 .site-footer {
-  padding: 72px var(--pad) 120px;
+  padding: 72px var(--pad) calc(120px + var(--safe-bottom));
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -1161,11 +1168,11 @@ input::placeholder, textarea::placeholder { color: rgba(242, 236, 228, .4); }
   position: absolute;
   left: var(--pad);
   right: var(--pad);
-  top: calc(var(--op-y, 50%) - 5px);
+  top: var(--op-y, 50%);
   height: 10px;
   border-radius: 5px;
   transform-origin: center;
-  transform: scaleX(0);
+  transform: translateY(-50%) scaleX(0);
   background: linear-gradient(90deg, transparent, var(--red) 12%, #E2303B 50%, var(--red) 88%, transparent);
   box-shadow: 0 0 30px rgba(210, 20, 31, .7);
   pointer-events: none;
@@ -1206,11 +1213,11 @@ input::placeholder, textarea::placeholder { color: rgba(242, 236, 228, .4); }
 @keyframes opThread{ 0% { transform: scaleY(0) } 42%, 58% { transform: scaleY(1) } 100% { transform: scaleY(0) } }
 @keyframes opGlow  { 0% { opacity: 0 } 36% { opacity: .9 } 100% { opacity: 0 } }
 @keyframes opBand {
-  0%   { transform: scaleX(0);    height: 10px; border-radius: 5px; opacity: 1 }
-  20%  { transform: scaleX(1.03); height: 10px; border-radius: 5px }
-  30%  { transform: scaleX(1);    height: 10px }
+  0%   { transform: translateY(-50%) scaleX(0);    height: 10px; border-radius: 5px; opacity: 1 }
+  20%  { transform: translateY(-50%) scaleX(1.03); height: 10px; border-radius: 5px }
+  30%  { transform: translateY(-50%) scaleX(1);    height: 10px }
   50%  { height: 10px }
-  100% { transform: scaleX(1); height: 1px; border-radius: 1px; opacity: .95 }
+  100% { transform: translateY(-50%) scaleX(1); height: 1px; border-radius: 1px; opacity: .95 }
 }
 
 /* Пока не коснулись, шапка ждёт: фон и свечение видны, содержимое — нет. */
@@ -1220,7 +1227,7 @@ input::placeholder, textarea::placeholder { color: rgba(242, 236, 228, .4); }
 
 #music-btn {
   position: fixed;
-  right: 18px; top: 18px;
+  right: calc(18px + env(safe-area-inset-right)); top: calc(18px + var(--safe-top));
   z-index: 45;
   appearance: none;
   border: 1px solid rgba(242, 236, 228, .35);
@@ -1256,7 +1263,7 @@ input::placeholder, textarea::placeholder { color: rgba(242, 236, 228, .4); }
 
 #sticky {
   position: fixed;
-  left: 50%; bottom: 22px;
+  left: 50%; bottom: calc(22px + var(--safe-bottom));
   transform: translateX(-50%);
   z-index: 40;
   appearance: none;
