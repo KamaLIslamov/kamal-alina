@@ -1,0 +1,563 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Камал и Алина · 22 октября 2026</title>
+<meta name="description" content="Приглашаем вас на свадьбу Камала и Алины — 22 октября 2026, Бишкек, ресторан Versal. Сбор гостей в 16:00.">
+<meta name="theme-color" content="#0B0B0B">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Камал и Алина · 22 октября 2026">
+<meta property="og:description" content="22 октября 2026, Бишкек, ресторан Versal. Сбор гостей в 16:00.">
+<meta property="og:locale" content="ru_RU">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Marck+Script&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<!-- Сюда ссылку на Google Apps Script (см. apps-script.gs). Пусто — ответы никуда не уходят. -->
+<meta name="rsvp-endpoint" content="https://script.google.com/macros/s/AKfycbzg7Jp2SDNkkbysFzSwaoQvWGBeA5DvLIZ5i0jpzbXWCpOaUi2kIeZvEVRum8Pa1dLvxw/exec">
+<link rel="icon" href="favicon-32.png" sizes="32x32">
+<link rel="icon" href="icon-512.png" sizes="512x512">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="stylesheet" href="styles.css">
+<noscript>
+  <!-- Без JS печать нажать некому — показываем приглашение сразу. -->
+  <style>
+    #opening { display: none !important; }
+    #stage.sealed .hero *, #stage.sealed #music-btn { animation-play-state: running !important; }
+    #stage.sealed #glyphs, #stage.sealed #ghost, #stage.sealed #hero-canvas { opacity: 1 !important; }
+    #stage.sealed #frame { overflow-y: auto !important; }
+  </style>
+</noscript>
+</head>
+<body>
+
+<div id="stage" class="sealed">
+<div id="frame">
+
+  <!-- ============================================================ hero -->
+  <section class="hero">
+    <div class="hero-aurora"></div>
+    <div class="hero-blob a"></div>
+    <div class="hero-blob b"></div>
+
+    <div id="ghost">22</div>
+
+    <div id="glyphs">
+      <div style="left:4%;top:8%;font-size:clamp(90px,22cqw,260px);font-style:normal;color:#D2141F;opacity:.22;animation-duration:14s;animation-delay:0s">22</div>
+      <div style="left:72%;top:4%;font-size:clamp(80px,18cqw,220px);font-style:italic;color:#F2ECE4;opacity:.12;animation-duration:18s;animation-delay:-6s">&amp;</div>
+      <div style="left:78%;top:62%;font-size:clamp(70px,16cqw,200px);font-style:normal;color:#D2141F;opacity:.2;animation-duration:16s;animation-delay:-3s">X</div>
+      <div style="left:-2%;top:58%;font-size:clamp(100px,24cqw,300px);font-style:italic;color:#D2141F;opacity:.18;animation-duration:20s;animation-delay:-9s">К</div>
+      <div style="left:56%;top:76%;font-size:clamp(100px,24cqw,300px);font-style:italic;color:#F2ECE4;opacity:.22;animation-duration:17s;animation-delay:-12s">А</div>
+      <div style="left:30%;top:2%;font-size:clamp(28px,6cqw,64px);font-style:normal;color:#F2ECE4;opacity:.22;animation-duration:22s;animation-delay:-4s">2026</div>
+      <div style="left:8%;top:84%;font-size:clamp(28px,6cqw,64px);font-style:italic;color:#F2ECE4;opacity:.2;animation-duration:19s;animation-delay:-8s">16:00</div>
+    </div>
+
+    <canvas id="hero-canvas" aria-hidden="true"></canvas>
+
+    <header class="hero-bar top"><span>Приглашение</span></header>
+
+    <div class="hero-center">
+      <div id="greeting">Дорогие гости, приглашаем вас на свадьбу</div>
+      <h1 class="names">
+        <span class="clip first"><span class="name">Камал</span></span>
+        <span class="amp-row"><i></i><span>и</span><i></i></span>
+        <span class="clip last"><span class="name">Алина</span></span>
+      </h1>
+      <div class="hero-stem"></div>
+    </div>
+
+    <footer class="hero-bar bottom">
+      <span>22 октября 2026, четверг</span>
+      <span>Бишкек · ресторан Versal</span>
+    </footer>
+  </section>
+
+  <!-- ========================================================= marquee -->
+  <div class="marquee">
+    <div class="marquee-track">
+      <span>22 октября · Бишкек · Ресторан Versal · Камал &amp; Алина · 22 октября · Бишкек · Ресторан Versal · Камал &amp; Алина · 22 октября · Бишкек · Ресторан Versal · Камал &amp; Алина · 22 октября · Бишкек · Ресторан Versal · Камал &amp; Алина · </span>
+      <span>22 октября · Бишкек · Ресторан Versal · Камал &amp; Алина · 22 октября · Бишкек · Ресторан Versal · Камал &amp; Алина · 22 октября · Бишкек · Ресторан Versal · Камал &amp; Алина · 22 октября · Бишкек · Ресторан Versal · Камал &amp; Алина · </span>
+    </div>
+  </div>
+
+  <!-- =========================================================== quote -->
+  <section class="quote-sec">
+    <div class="amp">&amp;</div>
+
+    <div class="edge-photo left" data-reveal-left><img src="half-alina.jpg" alt=""></div>
+    <div class="edge-photo right" data-reveal-right><img src="half-kamal.jpg" alt=""></div>
+
+    <div class="quote-body" data-reveal>
+      <div class="eyebrow">Дорогие гости</div>
+      <p id="quote">Приглашаем вас разделить с нами день, когда два имени станут <em>одной семьёй</em>.</p>
+      <p class="quote-note">Торжественный вечер, накрытые столы и самые близкие люди рядом. Нам важно, чтобы вы были среди них.</p>
+      <div class="flow-line"></div>
+    </div>
+  </section>
+
+  <!-- ========================================================= details -->
+  <section class="details">
+    <div class="halo"></div>
+    <div class="wrap" data-reveal style="display:flex;flex-direction:column;gap:clamp(40px,6cqw,72px)">
+
+      <div style="display:flex;flex-direction:column;gap:20px">
+        <div class="sec-head">
+          <div class="eyebrow">III</div><div class="rule"></div><div class="eyebrow">Детали вечера</div>
+        </div>
+        <h2 class="h2">Когда <em>и</em> где</h2>
+        <div class="lede" style="font-size:clamp(20px,2.4cqw,28px);color:var(--soft);max-width:520px">
+          Один вечер, который мы запомним навсегда. Всё, что нужно знать, чтобы оказаться рядом.
+        </div>
+      </div>
+
+      <div class="details-grid">
+
+        <!-- когда -->
+        <div class="card card-date" id="date-card">
+          <div class="sheen"></div>
+
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <div class="eyebrow">Дата</div>
+            <div style="font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--mute)">Четверг</div>
+          </div>
+
+          <div class="big-22">22</div>
+
+          <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap">
+            <div style="display:flex;flex-direction:column;gap:6px">
+              <div style="font-family:var(--garamond);font-style:italic;font-size:38px;line-height:1">октября</div>
+              <div style="font-family:var(--serif);font-size:22px;letter-spacing:.12em;color:var(--mute)">2026</div>
+            </div>
+            <div style="display:flex;align-items:center;gap:14px">
+              <svg viewBox="0 0 64 64" style="width:56px;height:56px;flex:none" aria-hidden="true">
+                <circle cx="32" cy="32" r="30" fill="none" stroke="rgba(242,236,228,.3)" stroke-width="1"></circle>
+                <circle cx="32" cy="32" r="1.6" fill="#D2141F"></circle>
+                <line x1="32" y1="32" x2="32" y2="12" stroke="#F2ECE4" stroke-width="1.6" stroke-linecap="round" style="transform-origin:32px 32px;transform:rotate(120deg)"></line>
+                <line x1="32" y1="32" x2="32" y2="8" stroke="#D2141F" stroke-width="1.2" stroke-linecap="round" style="transform-origin:32px 32px;transform:rotate(0deg)"></line>
+              </svg>
+              <div style="display:flex;flex-direction:column;gap:4px">
+                <div style="font-family:var(--serif);font-size:26px;line-height:1">16:00</div>
+                <div style="font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:var(--mute)">сбор гостей</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="weather">
+            <div style="display:flex;flex-direction:column;gap:4px">
+              <div style="font-size:9px;letter-spacing:.3em;text-transform:uppercase;color:var(--mute)">Погода в Бишкеке</div>
+              <div id="weather-text" style="font-family:var(--garamond);font-style:italic;font-size:18px;line-height:1.2;color:var(--soft)">Загружаем прогноз…</div>
+            </div>
+            <div id="weather-temp" style="font-family:var(--serif);font-size:30px;line-height:1;color:var(--mute-2)">—</div>
+          </div>
+
+          <div style="margin-top:auto;padding-top:24px;display:flex;flex-direction:column;gap:14px">
+            <div style="display:flex;justify-content:space-between;align-items:baseline">
+              <div style="font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--mute)">Октябрь</div>
+              <div style="font-family:var(--serif);font-style:italic;font-size:14px;color:var(--mute)">MMXXVI</div>
+            </div>
+            <div class="cal-head">
+              <div>пн</div><div>вт</div><div>ср</div><div>чт</div><div>пт</div><div>сб</div><div>вс</div>
+            </div>
+            <div class="cal-grid" id="cal-cells"></div>
+          </div>
+
+          <div style="height:1px;background:rgba(242,236,228,.14);margin-top:8px"></div>
+
+          <a id="ics-link" class="link-ics" href="#" download="Svadba-Kamal-i-Alina.ics">Добавить в календарь <span>+</span></a>
+        </div>
+
+        <!-- где -->
+        <div class="card card-place" id="place-card">
+          <div style="position:relative;display:flex;justify-content:space-between;align-items:center">
+            <div class="eyebrow">Место</div>
+            <div style="font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--mute-2)">Бишкек</div>
+          </div>
+
+          <div class="map-slot">
+            <iframe src="route-map.html" title="Как добраться до Бишкека" loading="lazy"></iframe>
+          </div>
+
+          <div style="position:relative;display:flex;flex-direction:column;gap:10px">
+            <div style="font-family:var(--garamond);font-style:italic;font-size:clamp(22px,2.4cqw,30px);line-height:1">Ресторан</div>
+            <div class="versal">Versal</div>
+          </div>
+
+          <div style="position:relative;display:flex;flex-direction:column;gap:18px">
+            <p style="margin:0;max-width:360px;font-family:var(--garamond);font-style:italic;font-size:20px;line-height:1.4;color:var(--ink-soft);text-wrap:pretty">
+              Банкетный зал, ужин и танцы до поздней ночи. Парковка у входа.
+            </p>
+            <div style="height:1px;background:rgba(11,11,11,.12)"></div>
+            <div style="display:flex;flex-direction:column;gap:10px">
+              <a class="btn-2gis" href="https://2gis.kg/bishkek/firm/70000001020558218" target="_blank" rel="noopener">
+                <span style="display:inline-flex;align-items:center;gap:12px">
+                  <span style="width:8px;height:8px;border-radius:50%;background:#19AA1E;display:inline-block"></span>Открыть в 2ГИС
+                </span>
+                <span style="font-size:16px;letter-spacing:0">→</span>
+              </a>
+              <a class="btn-hotels" href="https://www.booking.com/searchresults.ru.html?ss=%D0%91%D0%B8%D1%88%D0%BA%D0%B5%D0%BA&latitude=42.887474&longitude=74.661585&radius=5&checkin=2026-10-22&checkout=2026-10-23&group_adults=2&no_rooms=1" target="_blank" rel="noopener">
+                <span>Отели рядом</span>
+                <span style="font-size:16px;letter-spacing:0">→</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================== story -->
+  <section class="story">
+    <div class="wrap" data-reveal style="display:flex;flex-direction:column;gap:clamp(48px,7cqw,96px)">
+
+      <div style="display:flex;flex-direction:column;gap:22px">
+        <div class="sec-head">
+          <div class="eyebrow">II</div><div class="rule"></div><div class="eyebrow">Наша история</div>
+        </div>
+        <h2 class="h2">Как всё <em>началось</em></h2>
+      </div>
+
+      <div id="story-scroll" class="scroll-x">
+        <div class="story-track">
+          <div class="story-rail"></div>
+          <div id="story-prog"></div>
+
+          <div class="story-item" data-reveal>
+            <div class="story-dot"><i></i></div>
+            <div style="display:flex;align-items:baseline;gap:12px">
+              <div class="story-year">2023</div><div class="story-when">12 июня</div>
+            </div>
+            <div class="story-title">Знакомство на работе</div>
+            <p class="story-text">Коллеги, которые с первого дня друг друга не выносили. Споры, конфликты и полная уверенность: «уж точно не он» и «уж точно не она».</p>
+          </div>
+
+          <div class="story-item" data-reveal>
+            <div class="story-dot"><i></i></div>
+            <div style="display:flex;align-items:baseline;gap:12px">
+              <div class="story-year">2024</div><div class="story-when">Апрель</div>
+            </div>
+            <div class="story-title">Начало отношений</div>
+            <p class="story-text">Спустя почти год споров оказалось, что за ними всё это время пряталось совсем другое чувство.</p>
+          </div>
+
+          <div class="story-item" data-reveal>
+            <div class="story-dot"><i></i></div>
+            <div style="display:flex;align-items:baseline;gap:12px">
+              <div class="story-year">2026</div><div class="story-when">Июль</div>
+            </div>
+            <div class="story-title">Она сказала «да»</div>
+            <p class="story-text">Кольцо, один вопрос и самое важное «да» в жизни.</p>
+          </div>
+
+          <div class="story-item">
+            <div class="story-dot now"></div>
+            <div style="display:flex;align-items:baseline;gap:12px">
+              <div class="story-year" style="color:var(--red)">2026</div><div class="story-when">22 октября</div>
+            </div>
+            <div class="story-title" style="color:var(--cream)">Свадьба</div>
+            <p class="story-text">И вы — часть этой истории.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="since">
+        <div style="font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--mute)">Вместе со дня знакомства · 12 июня 2023</div>
+        <div class="since-row">
+          <div class="since-cell lead"><b id="since-years">0</b><span id="since-years-word">лет</span></div>
+          <div class="since-cell"><b id="since-months">0</b><span id="since-months-word">месяцев</span></div>
+          <div class="since-cell"><b id="since-days">0</b><span id="since-days-word">дней</span></div>
+          <div class="since-cell"><b id="since-hours">00</b><span>ч</span></div>
+          <div class="since-cell"><b id="since-min">00</b><span>мин</span></div>
+          <div class="since-cell sec"><b id="since-sec">00</b><span>сек</span></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================= program -->
+  <section class="program on-cream">
+    <div data-reveal style="display:flex;flex-direction:column;gap:clamp(40px,6cqw,72px)">
+
+      <div class="wrap" style="padding:0 var(--pad);display:flex;flex-direction:column;gap:22px">
+        <div class="sec-head">
+          <div class="eyebrow">IV</div><div class="rule"></div><div class="eyebrow">Программа</div>
+        </div>
+        <h2 class="h2">Как пройдёт <em>вечер</em></h2>
+        <div class="lede" style="font-size:clamp(18px,2.2cqw,26px);color:var(--ink-soft)">Листайте ленту вбок</div>
+      </div>
+
+      <div id="program-scroll" class="scroll-x">
+        <div class="prog-item">
+          <div style="display:flex;align-items:center;gap:14px">
+            <svg viewBox="0 0 48 48" style="width:44px;height:44px;flex:none" aria-hidden="true">
+              <circle cx="24" cy="24" r="22" fill="none" stroke="rgba(11,11,11,.35)" stroke-width="1"></circle>
+              <circle cx="24" cy="24" r="1.4" fill="#D2141F"></circle>
+              <line x1="24" y1="24" x2="24" y2="10" stroke="#0B0B0B" stroke-width="1.6" stroke-linecap="round" style="transform-origin:24px 24px;transform:rotate(120deg)"></line>
+              <line x1="24" y1="24" x2="24" y2="7" stroke="#D2141F" stroke-width="1.1" stroke-linecap="round" style="transform-origin:24px 24px;transform:rotate(0deg)"></line>
+            </svg>
+            <div class="prog-time">16:00</div>
+          </div>
+          <div class="prog-title">Сбор гостей</div>
+          <p class="prog-text">Welcome-зона, шампанское и первые фотографии.</p>
+          <div class="prog-idx">1 / 5</div>
+        </div>
+
+        <div class="prog-item">
+          <div style="display:flex;align-items:center;gap:14px">
+            <svg viewBox="0 0 48 48" style="width:44px;height:44px;flex:none" aria-hidden="true">
+              <circle cx="24" cy="24" r="22" fill="none" stroke="rgba(11,11,11,.35)" stroke-width="1"></circle>
+              <circle cx="24" cy="24" r="1.4" fill="#D2141F"></circle>
+              <line x1="24" y1="24" x2="24" y2="10" stroke="#0B0B0B" stroke-width="1.6" stroke-linecap="round" style="transform-origin:24px 24px;transform:rotate(150deg)"></line>
+              <line x1="24" y1="24" x2="24" y2="7" stroke="#D2141F" stroke-width="1.1" stroke-linecap="round" style="transform-origin:24px 24px;transform:rotate(0deg)"></line>
+            </svg>
+            <div class="prog-time">17:00</div>
+          </div>
+          <div class="prog-title">Церемония</div>
+          <p class="prog-text">Самые важные слова и первые минуты как муж и жена.</p>
+          <div class="prog-idx">2 / 5</div>
+        </div>
+
+        <div class="prog-item">
+          <div style="display:flex;align-items:center;gap:14px">
+            <svg viewBox="0 0 48 48" style="width:44px;height:44px;flex:none" aria-hidden="true">
+              <circle cx="24" cy="24" r="22" fill="none" stroke="rgba(11,11,11,.35)" stroke-width="1"></circle>
+              <circle cx="24" cy="24" r="1.4" fill="#D2141F"></circle>
+              <line x1="24" y1="24" x2="24" y2="10" stroke="#0B0B0B" stroke-width="1.6" stroke-linecap="round" style="transform-origin:24px 24px;transform:rotate(180deg)"></line>
+              <line x1="24" y1="24" x2="24" y2="7" stroke="#D2141F" stroke-width="1.1" stroke-linecap="round" style="transform-origin:24px 24px;transform:rotate(0deg)"></line>
+            </svg>
+            <div class="prog-time">18:00</div>
+          </div>
+          <div class="prog-title">Ужин</div>
+          <p class="prog-text">Банкет, тосты и тёплые слова от близких.</p>
+          <div class="prog-idx">3 / 5</div>
+        </div>
+
+        <div class="prog-item">
+          <div style="display:flex;align-items:center;gap:14px">
+            <svg viewBox="0 0 48 48" style="width:44px;height:44px;flex:none" aria-hidden="true">
+              <circle cx="24" cy="24" r="22" fill="none" stroke="rgba(11,11,11,.35)" stroke-width="1"></circle>
+              <circle cx="24" cy="24" r="1.4" fill="#D2141F"></circle>
+              <line x1="24" y1="24" x2="24" y2="10" stroke="#0B0B0B" stroke-width="1.6" stroke-linecap="round" style="transform-origin:24px 24px;transform:rotate(255deg)"></line>
+              <line x1="24" y1="24" x2="24" y2="7" stroke="#D2141F" stroke-width="1.1" stroke-linecap="round" style="transform-origin:24px 24px;transform:rotate(180deg)"></line>
+            </svg>
+            <div class="prog-time">20:30</div>
+          </div>
+          <div class="prog-title">Первый танец</div>
+          <p class="prog-text">Танцпол открывается. Далее — все вместе.</p>
+          <div class="prog-idx">4 / 5</div>
+        </div>
+
+        <div class="prog-item">
+          <div style="display:flex;align-items:center;gap:14px">
+            <svg viewBox="0 0 48 48" style="width:44px;height:44px;flex:none" aria-hidden="true">
+              <circle cx="24" cy="24" r="22" fill="none" stroke="rgba(11,11,11,.35)" stroke-width="1"></circle>
+              <circle cx="24" cy="24" r="1.4" fill="#D2141F"></circle>
+              <line x1="24" y1="24" x2="24" y2="10" stroke="#0B0B0B" stroke-width="1.6" stroke-linecap="round" style="transform-origin:24px 24px;transform:rotate(300deg)"></line>
+              <line x1="24" y1="24" x2="24" y2="7" stroke="#D2141F" stroke-width="1.1" stroke-linecap="round" style="transform-origin:24px 24px;transform:rotate(0deg)"></line>
+            </svg>
+            <div class="prog-time">22:00</div>
+          </div>
+          <div class="prog-title">Торт и финал</div>
+          <p class="prog-text">Сладкое, бенгальские огни и проводы молодожёнов.</p>
+          <div class="prog-idx">5 / 5</div>
+        </div>
+
+        <div style="flex:0 0 var(--pad)"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================= countdown -->
+  <section class="countdown">
+    <div class="halo"></div>
+    <div class="split" data-reveal>
+
+      <div style="display:flex;flex-direction:column;gap:22px">
+        <div class="sec-head">
+          <div class="eyebrow">V</div><div class="rule"></div><div class="eyebrow">Отсчёт</div>
+        </div>
+        <h2 class="h2">До встречи<br><em>осталось</em></h2>
+        <p class="lede" style="font-size:clamp(20px,2.4cqw,28px);max-width:420px;color:var(--soft)">
+          Стрелка идёт по кругу, и каждый её оборот приближает нас к вам.
+        </p>
+
+        <div class="cd-strip">
+          <div class="cd-cell days"><b id="cd-days">0</b><span id="days-word">дней</span></div>
+          <div class="cd-cell"><b id="cd-hours">00</b><span>часов</span></div>
+          <div class="cd-cell"><b id="cd-min">00</b><span>минут</span></div>
+          <div class="cd-cell"><b id="cd-sec">00</b><span>секунд</span></div>
+        </div>
+      </div>
+
+      <div class="dial">
+        <div class="ring-text" aria-hidden="true">
+          <svg viewBox="0 0 200 200">
+            <defs><path id="ringPath2" d="M100,100 m-96,0 a96,96 0 1,1 192,0 a96,96 0 1,1 -192,0"></path></defs>
+            <text style="font-family:Jost,sans-serif;font-size:7.4px;letter-spacing:.3em;fill:rgba(242,236,228,.5)">
+              <textPath href="#ringPath2" textLength="603" lengthAdjust="spacing">ДО СВАДЬБЫ КАМАЛА И АЛИНЫ · 22 ОКТЯБРЯ 2026 · 16:00 · ДО СВАДЬБЫ КАМАЛА И АЛИНЫ · 22 ОКТЯБРЯ 2026 · 16:00 · </textPath>
+            </text>
+          </svg>
+        </div>
+
+        <svg class="face" viewBox="0 0 400 400" aria-hidden="true">
+          <g transform="translate(200 200)">
+            <g id="ticks"></g>
+            <circle r="164" fill="none" stroke="rgba(242,236,228,.15)" stroke-width="1"></circle>
+            <circle id="sec-ring" r="164" fill="none" stroke="#D2141F" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="1030.4" stroke-dashoffset="0" transform="rotate(-90)"></circle>
+            <circle r="148" fill="none" stroke="rgba(242,236,228,.15)" stroke-width="1"></circle>
+            <circle id="min-ring" r="148" fill="none" stroke="#F2ECE4" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="929.9" stroke-dashoffset="0" transform="rotate(-90)"></circle>
+            <g id="sec-hand"><line x1="0" y1="0" x2="0" y2="-164" stroke="#D2141F" stroke-width="1"></line><circle cy="-164" r="6" fill="#D2141F"></circle></g>
+            <circle r="4" fill="#F2ECE4"></circle>
+          </g>
+        </svg>
+
+        <div class="center">
+          <div class="n" id="cd-days-big">0</div>
+          <div class="w" id="days-word-2">дней</div>
+          <div class="meta" style="margin-top:14px">22 · 10 · 2026 · 16:00</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================================================ rsvp -->
+  <section class="rsvp on-cream" id="rsvp">
+    <div class="amp">&amp;</div>
+    <div class="split" data-reveal>
+
+      <div style="display:flex;flex-direction:column;gap:22px">
+        <div class="sec-head">
+          <div class="eyebrow">VI</div><div class="rule"></div><div class="eyebrow">Ответ</div>
+        </div>
+        <h2 class="h2">Будете<br><em>с нами?</em></h2>
+        <p class="lede" style="font-size:clamp(20px,2.4cqw,28px);max-width:400px;color:var(--ink-soft)">
+          Заполните билет — это займёт полминуты. Мы приготовим для вас место за столом.
+        </p>
+      </div>
+
+      <div class="ticket-wrap">
+        <div class="ticket-shadow"></div>
+        <div id="ticket">
+          <div class="ticket-head"><span>Пригласительный</span><span style="color:var(--red)">К &amp; А</span></div>
+
+          <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:16px">
+            <div style="font-family:var(--serif);font-size:clamp(40px,6cqw,64px);line-height:.9;letter-spacing:-.03em">22.10</div>
+            <div style="text-align:right;display:flex;flex-direction:column;gap:4px">
+              <div style="font-family:var(--garamond);font-style:italic;font-size:22px;line-height:1">Versal</div>
+              <div style="font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--mute)">16:00 · Бишкек</div>
+            </div>
+          </div>
+
+          <form id="rsvp-form" novalidate>
+            <label for="name">Гость
+              <input id="name" name="name" type="text" autocomplete="name" placeholder="Имя и фамилия">
+            </label>
+            <div id="name-error" hidden>Напишите, пожалуйста, ваше имя</div>
+
+            <div class="guest-row">
+              <div style="font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--mute)">Сколько вас</div>
+              <div style="display:flex;align-items:center;gap:18px">
+                <button type="button" class="btn-round" id="dec" aria-label="Меньше гостей">−</button>
+                <div id="guests" aria-live="polite">1</div>
+                <button type="button" class="btn-round" id="inc" aria-label="Больше гостей">+</button>
+              </div>
+            </div>
+
+            <div class="choice-grid">
+              <button type="button" class="choice" id="btn-yes" aria-pressed="true"><b>Приду</b><span>с радостью</span></button>
+              <button type="button" class="choice" id="btn-no" aria-pressed="false"><b>Не смогу</b><span>к сожалению</span></button>
+            </div>
+
+            <button type="submit" id="submit"><span>Отправить ответ</span><span class="mark">→</span></button>
+
+            <div id="send-error" hidden>
+              <span>Не удалось отправить ответ. Проверьте связь.</span>
+              <button type="button" class="btn btn-outline" id="retry">Повторить</button>
+            </div>
+          </form>
+
+          <div id="rsvp-done" hidden>
+            <div class="stamp">К&amp;А</div>
+            <div id="done-kicker" style="font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--mute)">Ждём вас</div>
+            <div id="done-name"><span></span></div>
+            <p id="done-text"></p>
+            <div id="done-count" style="font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--mute)"></div>
+            <div class="done-actions">
+              <button type="button" class="btn btn-outline" id="save-ticket">Сохранить билет</button>
+              <button type="button" class="btn btn-solid" id="share-ticket">В сторис</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================== wishes -->
+  <section class="wishes">
+    <div class="wrap" data-reveal style="display:flex;flex-direction:column;gap:clamp(40px,6cqw,72px)">
+
+      <div style="display:flex;flex-direction:column;gap:22px">
+        <div class="sec-head">
+          <div class="eyebrow">VII</div><div class="rule"></div><div class="eyebrow">Пожелания</div>
+        </div>
+      </div>
+
+      <div class="wish-top">
+        <h2 class="h2">Пара слов <em>для нас</em></h2>
+        <form id="wish-form">
+          <textarea id="wish-text" rows="3" placeholder="Напишите пожелание молодожёнам…"></textarea>
+          <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
+            <input id="wish-name" type="text" placeholder="Ваше имя" autocomplete="name">
+            <button type="submit" class="btn btn-solid" style="font-size:10px;letter-spacing:.26em;height:48px;padding:0 24px">Оставить</button>
+          </div>
+          <div id="wish-error" hidden>Не удалось отправить пожелание. Проверьте связь и попробуйте ещё раз.</div>
+        </form>
+      </div>
+
+      <div id="board">
+        <div class="top-rule"></div>
+        <div id="wish-count"></div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div>С любовью, Камал и Алина</div>
+    <div class="mono">К&amp;А</div>
+    <div>22 · 10 · 2026</div>
+  </footer>
+
+</div><!-- /#frame -->
+
+  <div id="noise" aria-hidden="true"></div>
+
+  <div id="opening">
+    <button id="op-btn" type="button" aria-label="Открыть приглашение"></button>
+    <div class="op-glow" aria-hidden="true"></div>
+    <div class="op-thread" aria-hidden="true"></div>
+    <div class="op-halo" aria-hidden="true"></div>
+    <div class="op-dot" aria-hidden="true"></div>
+    <div class="op-band" aria-hidden="true"></div>
+    <div class="op-hint">Коснитесь</div>
+  </div>
+
+  <audio id="audio" src="song.mp3" preload="auto"></audio>
+
+  <button id="music-btn" aria-label="Музыка">
+    <span id="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+    <span id="music-label">Музыка</span>
+  </button>
+
+  <button id="sticky" hidden>Приду →</button>
+
+  <canvas id="petals" aria-hidden="true"></canvas>
+
+</div><!-- /#stage -->
+
+<script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+# Код для Google Apps Script — живёт в самом Google.
+# Публиковать нельзя: в нём место под токен телеграм-бота.
+apps-script.gs
+
+# Исходники из Claude Design — на сайте не нужны
+invite-d-red-black.dc.html
+support.js
+
+# Служебное
+.claude/
+.playwright-mcp/
+.DS_Store

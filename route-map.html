@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/d3@7.9.0/dist/d3.min.js" integrity="sha384-CjloA8y00+1SDAUkjs099PVfnY2KmDC2BZnws9kh8D/lX1s46w6EPhpXdqMfjK6i" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/topojson-client@3.1.0/dist/topojson-client.min.js" integrity="sha384-Ukv1p/xTma6P4/2bY5KzWBw+ydSpXmhCMtyciIQVDJ1RmOxtCYNMF1uXT9T63H67" crossorigin="anonymous"></script>
+<style>
+  html,body{margin:0;height:100%;background:#F2ECE4;overflow:hidden}
+  svg{display:block;width:100%;height:100%}
+  .route{fill:none;stroke:#D2141F;stroke-width:1.6;stroke-dasharray:5 6;animation:dash 2.4s linear infinite}
+  .route.b{animation-duration:3.2s}
+  @keyframes dash{to{stroke-dashoffset:-22}}
+  .ping{fill:none;stroke:#D2141F;stroke-width:1;transform-box:fill-box;transform-origin:center;animation:ping 3s ease-out infinite}
+  .ping.d1{animation-delay:1s}.ping.d2{animation-delay:2s}
+  @keyframes ping{0%{transform:scale(.15);opacity:.9}100%{transform:scale(1);opacity:0}}
+  .lbl{font-family:'Jost',sans-serif;font-weight:500;font-size:9.5px;letter-spacing:.26em;text-transform:uppercase;fill:#0B0B0B}
+  .sub{font-family:'Playfair Display',serif;font-style:italic;font-size:11px;letter-spacing:.02em;fill:#D2141F}
+  .city{font-family:'Playfair Display',serif;font-size:16px;fill:#0B0B0B}
+  .city.big{font-size:24px}
+  .ctry{font-family:'Jost',sans-serif;font-weight:300;font-size:8.5px;letter-spacing:.3em;text-transform:uppercase;fill:#0B0B0B;opacity:.5}
+</style>
+</head>
+<body>
+<svg id="m" viewBox="0 0 600 340" preserveAspectRatio="xMidYMid slice"></svg>
+<script>
+(async () => {
+  const W = 600, H = 340;
+  const svg = d3.select('#m');
+  const topo = await (await fetch('https://cdn.jsdelivr.net/npm/world-atlas@2.0.2/countries-110m.json')).json();
+  const land = topojson.feature(topo, topo.objects.countries);
+  const borders = topojson.mesh(topo, topo.objects.countries, (a, b) => a !== b);
+  const frame = { type: 'Polygon', coordinates: [[[72.6, 41.6], [72.6, 44.2], [78.6, 44.2], [78.6, 41.6], [72.6, 41.6]]] };
+  const proj = d3.geoMercator().fitExtent([[10, 10], [W - 10, H - 10]], frame);
+  const path = d3.geoPath(proj);
+  svg.append('path').datum(land).attr('d', path).attr('fill', '#E8E1D6').attr('stroke', 'none');
+  svg.append('path').datum(borders).attr('d', path).attr('fill', 'none').attr('stroke', '#0B0B0B').attr('stroke-width', .7).attr('stroke-opacity', .3);
+  const cities = {
+    bishkek: { c: [74.59, 42.87], n: 'Бишкек' },
+    almaty: { c: [76.95, 43.24], n: 'Алматы', d: '≈ 240 км · 4 ч на авто' }
+  };
+  const P = k => proj(cities[k].c);
+  const curve = (a, b, k) => { const [x1, y1] = a, [x2, y2] = b; const mx = (x1 + x2) / 2, my = (y1 + y2) / 2; const dx = x2 - x1, dy = y2 - y1; const L = Math.hypot(dx, dy); const cx = mx - dy / L * L * k, cy = my + dx / L * L * k; return { d: `M${x1},${y1} Q${cx},${cy} ${x2},${y2}`, cx, cy }; };
+  const B = P('bishkek');
+  const r1 = curve(P('almaty'), B, .28);
+  svg.append('path').attr('class', 'route').attr('d', r1.d);
+  // country labels
+  const ctry = [['Казахстан', [75.4, 43.95]], ['Кыргызстан', [75.3, 41.9]]];
+  ctry.forEach(([n, c]) => { const [x, y] = proj(c); svg.append('text').attr('class', 'ctry').attr('x', x).attr('y', y).attr('text-anchor', 'middle').text(n); });
+  // origin cities
+  ['almaty'].forEach(k => {
+    const [x, y] = P(k);
+    svg.append('circle').attr('cx', x).attr('cy', y).attr('r', 3.2).attr('fill', '#0B0B0B');
+    svg.append('text').attr('class', 'city').attr('x', x + (k === 'almaty' ? 9 : -9)).attr('y', y + (k === 'almaty' ? 18 : -8)).attr('text-anchor', k === 'almaty' ? 'start' : 'end').text(cities[k].n);
+  });
+  // route distance labels at control points
+  const lab = (r, txt, anchor, dy) => svg.append('text').attr('class', 'sub').attr('x', r.cx).attr('y', r.cy + dy).attr('text-anchor', anchor).text(txt);
+  lab(r1, cities.almaty.d, 'middle', -6);
+  // destination
+  [0, 1, 2].forEach(i => svg.append('circle').attr('class', 'ping d' + i).attr('cx', B[0]).attr('cy', B[1]).attr('r', 34));
+  svg.append('circle').attr('cx', B[0]).attr('cy', B[1]).attr('r', 5.5).attr('fill', '#D2141F');
+  svg.append('circle').attr('cx', B[0]).attr('cy', B[1]).attr('r', 10).attr('fill', 'none').attr('stroke', '#D2141F').attr('stroke-width', 1);
+  svg.append('text').attr('class', 'city big').attr('x', B[0]).attr('y', B[1] + 44).attr('text-anchor', 'middle').text('Бишкек');
+  svg.append('text').attr('class', 'lbl').attr('x', B[0]).attr('y', B[1] + 62).attr('text-anchor', 'middle').text('Ресторан Versal');
+})();
+</script>
+</body>
+</html>
