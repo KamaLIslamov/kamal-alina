@@ -4,24 +4,43 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Камал и Алина · 22 октября 2026</title>
-<meta name="description" content="Приглашаем вас на свадьбу Камала и Алины — 22 октября 2026, Бишкек, ресторан Versal. Сбор гостей в 16:00.">
+<meta name="description" content="Приглашение на свадьбу Камала и Алины — 22 октября 2026, Бишкек, ресторан Versal, сбор гостей в 16:00. Подтвердите, пожалуйста, что придёте.">
+
+<!-- Страница с именами гостей и доской пожеланий: в поиске ей делать нечего.
+     Превью в мессенджерах это не ломает — их краулеры читают og-теги и
+     директиву noindex игнорируют. А вот robots.txt добавлять нельзя:
+     краулер Facebook его уважает, и превью в WhatsApp пропало бы совсем. -->
+<meta name="robots" content="noindex, follow">
+<link rel="canonical" href="https://kamalislamov.github.io/kamal-alina/">
+
 <meta name="theme-color" content="#0B0B0B">
+
+<!-- Telegram печатает site_name отдельной строкой над заголовком, поэтому
+     имена здесь не повторяются: сверху повод, ниже кто и когда. -->
+<meta property="og:site_name" content="Приглашение на свадьбу">
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="Камал и Алина">
 <meta property="og:title" content="Камал и Алина · 22 октября 2026">
-<meta property="og:description" content="Приглашаем вас на свадьбу. 22 октября 2026, Бишкек, ресторан Versal. Сбор гостей в 16:00.">
+<!-- Дата уже в заголовке, место и время — на картинке. Описанию остаётся
+     то, чего больше нигде нет: просьба ответить. WhatsApp обрезает его
+     примерно на втором десятке слов, поэтому главное стоит первым. -->
+<meta property="og:description" content="Бишкек, ресторан Versal, сбор гостей в 16:00. Откройте приглашение и подтвердите, что придёте.">
 <meta property="og:locale" content="ru_RU">
 <meta property="og:url" content="https://kamalislamov.github.io/kamal-alina/">
-<!-- Абсолютный адрес обязателен: мессенджеры не умеют разрешать относительные. -->
-<meta property="og:image" content="https://kamalislamov.github.io/kamal-alina/og.jpg">
+<!-- Абсолютный адрес обязателен: мессенджеры не умеют разрешать относительные.
+     Имя файла с номером версии, а не og.jpg: превью кешируются по адресу
+     и надолго, поэтому новая картинка должна лежать по новому адресу. -->
+<meta property="og:image" content="https://kamalislamov.github.io/kamal-alina/og-v2.jpg">
 <meta property="og:image:type" content="image/jpeg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Камал и Алина · 22 октября 2026 · Бишкек">
+<meta property="og:image:alt" content="Камал и Алина — портреты по краям тёмно-красного поля, 22 октября 2026, Бишкек">
+
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Камал и Алина · 22 октября 2026">
-<meta name="twitter:description" content="Приглашаем вас на свадьбу. Бишкек, ресторан Versal, сбор гостей в 16:00.">
-<meta name="twitter:image" content="https://kamalislamov.github.io/kamal-alina/og.jpg">
+<meta name="twitter:description" content="Бишкек, ресторан Versal, сбор гостей в 16:00. Откройте приглашение и подтвердите, что придёте.">
+<meta name="twitter:image" content="https://kamalislamov.github.io/kamal-alina/og-v2.jpg">
+<meta name="twitter:image:alt" content="Камал и Алина — портреты по краям тёмно-красного поля, 22 октября 2026, Бишкек">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Marck+Script&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">

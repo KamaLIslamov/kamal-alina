@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>Исходник og-превью — 1200×630</title>
+<!--
+  Из этой страницы рендерится og-v2.jpg — картинка превью для мессенджеров.
+
+  Как пересобрать (нужен локальный сервер: кадры подключены относительными
+  путями, а по file:// Chrome их не отдаст):
+
+    python3 -m http.server 8787 &
+    "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" \
+      --headless --disable-gpu --hide-scrollbars \
+      --force-device-scale-factor=1 --window-size=1200,630 \
+      --virtual-time-budget=6000 --screenshot=/tmp/og.png \
+      http://127.0.0.1:8787/og-source.html
+    sips -s format jpeg -s formatOptions 88 /tmp/og.png --out og-v2.jpg
+
+  Картинку после пересборки класть под НОВЫМ именем (og-v3.jpg и так далее)
+  и править адрес в index.html: мессенджеры кешируют превью по адресу и
+  надолго, перезапись содержимого до получателей не доедет.
+
+  Размер зашит в пиксели, а не в проценты: кадр здесь ровно один,
+  подстраиваться не подо что, зато виден каждый отступ. Весь текст держится
+  внутри центрального квадрата 630×630 — в списке чатов превью режут по нему.
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400;1,500&family=Marck+Script&family=Cormorant+Garamond:ital,wght@0,400;1,300;1,400&family=Jost:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0B0B0B;
+    --cream: #F2ECE4;
+    --red: #D2141F;
+    --red-deep: #7A0810;
+    --serif: 'Playfair Display', Georgia, serif;
+    --garamond: 'Cormorant Garamond', Georgia, serif;
+    --script: 'Marck Script', cursive;
+    --sans: 'Jost', system-ui, sans-serif;
+
+    /* Колонки с портретами. Центр = 1200 - 2*352 = 496 px,
+       это с запасом внутри квадрата 630. */
+    --side: 352px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body { background: #222; }
+
+  .og {
+    position: relative;
+    width: 1200px;
+    height: 630px;
+    overflow: hidden;
+    background:
+      radial-gradient(126% 102% at 50% 40%, rgba(210, 20, 31, .34) 0%, rgba(139, 9, 20, .2) 48%, rgba(122, 8, 16, .13) 100%),
+      linear-gradient(168deg, #16030A 0%, #0C0205 55%, #120309 100%);
+    font-family: var(--sans);
+  }
+
+  /* ---------------------------------------------------------- портреты */
+  /* Половинчатые кадры с сайта: срез лица у каждого смотрит внутрь,
+     поэтому Алина слева, Камал справа — так они обращены друг к другу.
+
+     Три приёма, которые убирают «наклеенную плашку»:
+
+     1. Светлота. Кадр отдаёт только её, цвет ему даёт общая подложка —
+        портреты живут в том же красно-чёрном поле, что и центр.
+     2. Маска на контейнере, а не на картинке. К внутреннему краю
+        прозрачность доходит ровно до нуля, поэтому ступеньки на шве
+        не остаётся. Маска висит на .side, потому что картинку крутит
+        transform, и маску он утащил бы за собой.
+     3. Подмасштаб. Срез лица уезжает за границу кадра, и вместо
+        анатомического обрыва видно щёку, уходящую в тень. Заодно из
+        кадра уходит ровный светлый фон, который и лез в глаза.  */
+  .side {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: var(--side);
+    overflow: hidden;
+    mix-blend-mode: luminosity;
+  }
+  .side.l {
+    left: 0;
+    opacity: .58;
+    mask-image:
+      linear-gradient(90deg, transparent 0%, #000 36%, #000 76%, transparent 100%),
+      linear-gradient(180deg, transparent 0%, #000 16%, #000 84%, transparent 100%);
+    mask-composite: intersect;
+  }
+  .side.r {
+    right: 0;
+    opacity: .52;
+    mask-image:
+      linear-gradient(270deg, transparent 0%, #000 36%, #000 76%, transparent 100%),
+      linear-gradient(180deg, transparent 0%, #000 16%, #000 84%, transparent 100%);
+    mask-composite: intersect;
+  }
+
+  .side img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Кадры узкие и высокие: по ширине они ложатся ровно, режется
+       только высота, поэтому в object-position важна лишь вертикаль. */
+  }
+  .side.l img {
+    object-position: 50% 42%;
+    filter: grayscale(1) contrast(1.18) brightness(.82);
+    transform: scale(1.05);
+    transform-origin: 70% 46%;
+  }
+  .side.r img {
+    object-position: 50% 38%;
+    filter: grayscale(1) contrast(1.18) brightness(.72);
+    transform: scale(1.05);
+    transform-origin: 30% 42%;
+  }
+
+  /* ------------------------------------------------------------- центр */
+  .core {
+    position: absolute;
+    left: var(--side);
+    right: var(--side);
+    top: 0;
+    bottom: 0;
+    padding: 58px 22px 54px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+  }
+
+  .eyebrow {
+    font-size: 13px;
+    font-weight: 300;
+    letter-spacing: .32em;
+    text-transform: uppercase;
+    color: rgba(242, 236, 228, .74);
+  }
+
+  .names { display: flex; flex-direction: column; align-items: center; width: 100%; }
+  .name {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 74px;
+    line-height: 1;
+    letter-spacing: -.02em;
+    color: var(--cream);
+  }
+  /* Каждое имя тянется к своему портрету: Камал справа, Алина слева. */
+  .name.first { align-self: flex-end;   margin-right: 8px; }
+  .name.last  { align-self: flex-start; margin-left: 8px; }
+
+  .amp { display: flex; align-items: center; gap: 22px; width: 100%; margin: -.08em 0; }
+  .amp i { flex: 1; height: 1px; }
+  .amp i:first-child { background: linear-gradient(90deg, transparent, rgba(210, 20, 31, .7)); }
+  .amp i:last-child  { background: linear-gradient(270deg, transparent, rgba(210, 20, 31, .7)); }
+  .amp span {
+    font-family: var(--script);
+    font-size: 52px;
+    line-height: 1;
+    color: var(--red);
+    transform: rotate(-6deg);
+  }
+
+  .foot { display: flex; flex-direction: column; align-items: center; gap: 14px; }
+  .date {
+    font-size: 17px;
+    font-weight: 400;
+    letter-spacing: .26em;
+    text-transform: uppercase;
+    color: var(--cream);
+  }
+  .where {
+    font-family: var(--garamond);
+    font-style: italic;
+    font-size: 26px;
+    line-height: 1;
+    color: rgba(242, 236, 228, .82);
+  }
+</style>
+</head>
+<body>
+
+<div class="og">
+  <div class="side l"><img src="half-alina.jpg" alt=""></div>
+  <div class="side r"><img src="half-kamal.jpg" alt=""></div>
+  <div class="core">
+    <div class="eyebrow">Приглашение&nbsp;на&nbsp;свадьбу</div>
+
+    <div class="names">
+      <div class="name first">Камал</div>
+      <div class="amp"><i></i><span>и</span><i></i></div>
+      <div class="name last">Алина</div>
+    </div>
+
+    <div class="foot">
+      <div class="date">22 октября 2026</div>
+      <div class="where">Бишкек · ресторан Versal · 16:00</div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
