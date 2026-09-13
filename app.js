@@ -819,25 +819,10 @@
   ['play', 'pause', 'volumechange', 'error'].forEach(e => audio.addEventListener(e, syncMusic));
 
   const FADE_IN = 1600, FADE_OUT = 700;   // мс
-  const START_AT = 75;                    // 1:15 — вступление пропускаем
 
-  // Перематываем только если трек ещё не дошёл до этой точки: после паузы
-  // гость продолжает с места, где остановился, а не слушает одно и то же.
-  function seekToStart() {
-    if (audio.currentTime >= START_AT) return;
-    if (isFinite(audio.duration) && audio.duration <= START_AT) return;
-    if (audio.readyState >= 1) { audio.currentTime = START_AT; return; }
-    audio.addEventListener('loadedmetadata', () => {
-      if (audio.currentTime < START_AT) audio.currentTime = START_AT;
-    }, { once: true });
-  }
-
-  // Штатный loop возвращал бы на 0, то есть ровно на пропущенное вступление,
-  // поэтому крутим круг вручную.
-  audio.addEventListener('ended', () => {
-    audio.currentTime = START_AT;
-    audio.play().catch(() => {});
-  });
+  // Трек играет с начала, поэтому перематывать нечего, а круг крутит
+  // штатный loop у самого <audio> — он смыкает конец с началом без
+  // паузы на перезапуск, в отличие от ручного цикла.
 
   // iOS игнорирует программную установку volume — громкость там отдана только
   // аппаратной кнопке, и затухание через неё не сработало бы. Проверяем один
@@ -911,7 +896,6 @@
   function startMusic() {
     mutedByUser = false;
     audio.muted = false;
-    seekToStart();
     setVolumeNow(0);                  // с тишины, чтобы нарастание было слышно
     const p = audio.play();
     fadeTo(1, FADE_IN);
