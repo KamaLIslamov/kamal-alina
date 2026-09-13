@@ -181,12 +181,16 @@ input::placeholder, textarea::placeholder { color: rgba(242, 236, 228, .4); }
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   /* Снап выравнивает карточку по краю прокрутки и о внутреннем отступе
-     не знает: браузер сам сдвигал ленту на величину --pad, и первая
-     карточка вставала вплотную к краю экрана, съедая боковое поле.
-     scroll-padding говорит ему, где на самом деле начинается кадр. */
-  scroll-padding-inline: var(--pad);
+     не знает: браузер сам сдвигает ленту на величину --pad, и первая
+     карточка встаёт вплотную к краю экрана, съедая боковое поле.
+     scroll-padding говорит ему, где на самом деле начинается кадр.
+
+     Свойства физические, а не логическое scroll-padding-inline: его
+     Safari понимает только с 15-й версии, а эти — с 14.1. На айфонах
+     постарше логическое молча игнорировалось, и отступ пропадал. */
+  scroll-padding-left: var(--pad);
+  scroll-padding-right: var(--pad);
   scrollbar-width: none;
-  -webkit-overflow-scrolling: touch;
 }
 
 /* Giant outlined ampersand used as a section watermark. */
