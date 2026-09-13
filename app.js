@@ -110,21 +110,6 @@
     if (err) throw err;
   }
 
-  /* ----------------------------------------------------------- .ics --- */
-
-  $('ics-link').href = 'data:text/calendar;charset=utf-8,' + encodeURIComponent([
-    'BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//Kamal & Alina//RU',
-    'BEGIN:VEVENT',
-    'UID:kamal-alina-2026@wedding',
-    'DTSTAMP:20260908T000000Z',
-    'DTSTART:20261022T100000Z',
-    'DTEND:20261022T170000Z',
-    'SUMMARY:Свадьба Камала и Алины',
-    'LOCATION:Ресторан Versal, Бишкек',
-    'DESCRIPTION:Сбор гостей к 16:00',
-    'END:VEVENT', 'END:VCALENDAR',
-  ].join('\r\n'));
-
   /* ------------------------------------------------ календарь октября --- */
 
   (function calendar() {
@@ -569,16 +554,6 @@
 
   $('save-ticket').addEventListener('click', async () => {
     download(await ticketBlob(), 'Kamal-Alina-22-10-2026.png');
-  });
-
-  $('share-ticket').addEventListener('click', async () => {
-    const blob = await ticketBlob();
-    const file = new File([blob], 'invite.png', { type: 'image/png' });
-    if (navigator.canShare && navigator.canShare({ files: [file] })) {
-      try { await navigator.share({ files: [file], title: 'Свадьба Камала и Алины' }); } catch (e) { /* отменено */ }
-    } else {
-      download(blob, 'Kamal-Alina-story.png');
-    }
   });
 
   /* ------------------------------------------------------ лепестки --- */

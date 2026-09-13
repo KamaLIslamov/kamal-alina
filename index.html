@@ -194,7 +194,11 @@
 
           <div style="height:1px;background:rgba(242,236,228,.14);margin-top:8px"></div>
 
-          <a id="ics-link" class="link-ics" href="#" download="Svadba-Kamal-i-Alina.ics">Добавить в календарь <span>+</span></a>
+          <!-- Настоящий файл, а не data:-адрес, и без download: Safari на iPhone
+               атрибут download для data: не исполняет, а на обычной ссылке он
+               заставил бы сохранить файл в «Файлы» вместо системного окна
+               «Добавить в календарь». -->
+          <a id="ics-link" class="link-ics" href="event.ics" type="text/calendar">Добавить в календарь <span>+</span></a>
         </div>
 
         <!-- где -->
@@ -517,7 +521,6 @@
             <div id="done-count" style="font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--mute)"></div>
             <div class="done-actions">
               <button type="button" class="btn btn-outline" id="save-ticket">Сохранить билет</button>
-              <button type="button" class="btn btn-solid" id="share-ticket">В сторис</button>
             </div>
           </div>
         </div>

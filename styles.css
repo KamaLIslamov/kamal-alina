@@ -975,7 +975,8 @@ input::placeholder, textarea::placeholder { color: rgba(242, 236, 228, .4); }
 #done-name { font-family: var(--serif); font-style: italic; font-size: clamp(32px, 4.4cqw, 48px); line-height: 1; color: var(--cream); overflow: hidden; }
 #done-name span { display: block; animation: riseIn 1s .5s var(--ease) both; }
 #done-text { margin: 0; font-family: var(--garamond); font-style: italic; font-size: clamp(20px, 2.4cqw, 26px); line-height: 1.3; color: var(--soft); text-wrap: pretty; animation: rise 1s .9s both; }
-.done-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 6px; animation: rise 1s 1.2s both; }
+/* Кнопка тут одна — сетка в одну колонку, иначе она заняла бы половину. */
+.done-actions { display: grid; grid-template-columns: 1fr; gap: 10px; margin-top: 6px; animation: rise 1s 1.2s both; }
 .done-actions .btn { font-size: 10px; letter-spacing: .24em; height: 52px; }
 
 /* -------------------------------------------------------------- wishes --- */
