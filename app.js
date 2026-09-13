@@ -265,7 +265,7 @@
         q.dx *= .9; q.dy *= .9;
         if (q.y < -10) { Object.assign(q, spawn()); q.y = H + 10; }
         ctx.globalAlpha = q.al * Math.min(1, (H - q.y) / (H * .15) + .2) * Math.min(1, q.y / (H * .12));
-        ctx.fillStyle = Math.random() < .12 ? '#F2ECE4' : '#D2141F';
+        ctx.fillStyle = Math.random() < .12 ? '#F2ECE4' : '#8C1130';
         ctx.beginPath();
         ctx.arc(q.x + q.dx, q.y + q.dy, q.sz, 0, 6.283);
         ctx.fill();
@@ -493,7 +493,7 @@
     const name = nameInput.value.trim();
 
     x.fillStyle = '#0B0B0B'; x.fillRect(0, 0, W, H);
-    x.fillStyle = '#D2141F'; x.fillRect(0, 0, W, 620);
+    x.fillStyle = '#8C1130'; x.fillRect(0, 0, W, 620);
 
     x.fillStyle = '#0B0B0B'; x.font = 'italic 520px "Playfair Display", Georgia, serif';
     x.globalAlpha = .12; x.fillText('&', 560, 560); x.globalAlpha = 1;
@@ -515,7 +515,7 @@
 
     x.fillStyle = '#A9A29A'; x.font = '500 26px Jost, sans-serif'; x.letterSpacing = '9px';
     x.fillText('ОТВЕТ', 80, 1010);
-    x.fillStyle = '#D2141F'; x.font = 'italic 84px "Playfair Display", Georgia, serif';
+    x.fillStyle = '#8C1130'; x.font = 'italic 84px "Playfair Display", Georgia, serif';
     x.letterSpacing = '0px';
     x.fillText(state.coming === 'yes' ? 'Приду с радостью' : 'К сожалению, не смогу', 80, 1110);
 
@@ -529,7 +529,7 @@
     x.fillStyle = '#A9A29A'; x.font = 'italic 40px "Cormorant Garamond", Georgia, serif';
     x.letterSpacing = '0px'; x.fillText('2026, четверг, 16:00', 80, 1490); x.fillText('ресторан, Бишкек', 560, 1490);
 
-    x.beginPath(); x.arc(W - 200, 1720, 110, 0, 6.283); x.fillStyle = '#D2141F'; x.fill();
+    x.beginPath(); x.arc(W - 200, 1720, 110, 0, 6.283); x.fillStyle = '#8C1130'; x.fill();
     x.fillStyle = '#F2ECE4'; x.font = 'italic 78px "Playfair Display", Georgia, serif';
     x.textAlign = 'center'; x.fillText('К&А', W - 200, 1748); x.textAlign = 'left';
 
@@ -577,7 +577,7 @@
       vy: (soft ? .8 : 1.2) + Math.random() * (soft ? 1.2 : 2),
       vx: -.6 + Math.random() * 1.2,
       r: Math.random() * Math.PI, vr: -.03 + Math.random() * .06,
-      col: Math.random() < .8 ? '#D2141F' : '#0B0B0B',
+      col: Math.random() < .8 ? '#8C1130' : '#0B0B0B',
     }));
 
     const t0 = performance.now();

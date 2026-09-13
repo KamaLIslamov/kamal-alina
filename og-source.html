@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <title>Исходник og-превью — 1200×630</title>
 <!--
-  Из этой страницы рендерится og-v2.jpg — картинка превью для мессенджеров.
+  Из этой страницы рендерится og-v3.jpg — картинка превью для мессенджеров.
 
   Как пересобрать (нужен локальный сервер: кадры подключены относительными
   путями, а по file:// Chrome их не отдаст):
@@ -15,9 +15,9 @@
       --force-device-scale-factor=1 --window-size=1200,630 \
       --virtual-time-budget=6000 --screenshot=/tmp/og.png \
       http://127.0.0.1:8787/og-source.html
-    sips -s format jpeg -s formatOptions 88 /tmp/og.png --out og-v2.jpg
+    sips -s format jpeg -s formatOptions 88 /tmp/og.png --out og-v3.jpg
 
-  Картинку после пересборки класть под НОВЫМ именем (og-v3.jpg и так далее)
+  Картинку после пересборки класть под НОВЫМ именем (og-v4.jpg и так далее)
   и править адрес в index.html: мессенджеры кешируют превью по адресу и
   надолго, перезапись содержимого до получателей не доедет.
 
@@ -32,8 +32,8 @@
   :root {
     --ink: #0B0B0B;
     --cream: #F2ECE4;
-    --red: #D2141F;
-    --red-deep: #7A0810;
+    --red: #8C1130;
+    --red-deep: #520A1E;
     --serif: 'Playfair Display', Georgia, serif;
     --garamond: 'Cormorant Garamond', Georgia, serif;
     --script: 'Marck Script', cursive;
@@ -54,8 +54,8 @@
     height: 630px;
     overflow: hidden;
     background:
-      radial-gradient(126% 102% at 50% 40%, rgba(210, 20, 31, .34) 0%, rgba(139, 9, 20, .2) 48%, rgba(122, 8, 16, .13) 100%),
-      linear-gradient(168deg, #16030A 0%, #0C0205 55%, #120309 100%);
+      radial-gradient(126% 102% at 50% 40%, rgba(140, 17, 48, .34) 0%, rgba(112, 12, 40, .2) 48%, rgba(82, 10, 30, .13) 100%),
+      linear-gradient(168deg, #14030B 0%, #0B0206 55%, #10030A 100%);
     font-family: var(--sans);
   }
 
@@ -157,8 +157,8 @@
 
   .amp { display: flex; align-items: center; gap: 22px; width: 100%; margin: -.08em 0; }
   .amp i { flex: 1; height: 1px; }
-  .amp i:first-child { background: linear-gradient(90deg, transparent, rgba(210, 20, 31, .7)); }
-  .amp i:last-child  { background: linear-gradient(270deg, transparent, rgba(210, 20, 31, .7)); }
+  .amp i:first-child { background: linear-gradient(90deg, transparent, rgba(140, 17, 48, .7)); }
+  .amp i:last-child  { background: linear-gradient(270deg, transparent, rgba(140, 17, 48, .7)); }
   .amp span {
     font-family: var(--script);
     font-size: 52px;
@@ -193,9 +193,9 @@
     <div class="eyebrow">Приглашение&nbsp;на&nbsp;свадьбу</div>
 
     <div class="names">
-      <div class="name first">Камал</div>
+      <div class="name first">Камала</div>
       <div class="amp"><i></i><span>и</span><i></i></div>
-      <div class="name last">Алина</div>
+      <div class="name last">Алины</div>
     </div>
 
     <div class="foot">

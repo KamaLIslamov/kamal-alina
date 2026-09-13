@@ -7,8 +7,13 @@
   --ink: #0B0B0B;
   --ink-2: #141414;
   --cream: #F2ECE4;
-  --red: #D2141F;
-  --red-deep: #7A0810;
+  --red: #8C1130;
+  --red-deep: #520A1E;
+  /* Те же два цвета покомпонентно: rgba() не умеет принимать hex из
+     переменной, а полупрозрачная вишня нужна в двух десятках правил.
+     Так оттенок правится в одном месте, а не сорока заменами. */
+  --red-rgb: 140, 17, 48;
+  --red-deep-rgb: 82, 10, 30;
   --soft: #D9D2C8;
   --mute: #A9A29A;
   --mute-2: #6B655F;
@@ -73,7 +78,7 @@ input::placeholder, textarea::placeholder { color: rgba(242, 236, 228, .4); }
 @keyframes float      { from { transform: translate(0, 0) rotate(-4deg) } to { transform: translate(2cqw, -3cqh) rotate(5deg) } }
 @keyframes eq         { from { transform: scaleY(.2) } to { transform: scaleY(1) } }
 @keyframes stamp      { from { transform: scale(1.8) rotate(-12deg); opacity: 0 } to { transform: none; opacity: 1 } }
-@keyframes pulse      { 0%, 100% { box-shadow: 0 0 0 0 rgba(210, 20, 31, .55) } 70% { box-shadow: 0 0 0 18px rgba(210, 20, 31, 0) } }
+@keyframes pulse      { 0%, 100% { box-shadow: 0 0 0 0 rgba(var(--red-rgb), .55) } 70% { box-shadow: 0 0 0 18px rgba(var(--red-rgb), 0) } }
 
 /* ------------------------------------------------------ stage / frame --- */
 /* #stage is the size container every cqw/cqh unit in the design resolves
@@ -171,7 +176,7 @@ input::placeholder, textarea::placeholder { color: rgba(242, 236, 228, .4); }
   font-size: clamp(300px, 50cqw, 760px);
   line-height: 1;
   color: transparent;
-  -webkit-text-stroke: 1px rgba(210, 20, 31, .5);
+  -webkit-text-stroke: 1px rgba(var(--red-rgb), .5);
   pointer-events: none;
   user-select: none;
 }
@@ -293,8 +298,8 @@ input::placeholder, textarea::placeholder { color: rgba(242, 236, 228, .4); }
   position: absolute;
   inset: -20%;
   background:
-    radial-gradient(circle at 30% 30%, rgba(210, 20, 31, .45) 0%, rgba(210, 20, 31, 0) 40%),
-    radial-gradient(circle at 70% 70%, rgba(122, 8, 16, .6) 0%, rgba(122, 8, 16, 0) 45%);
+    radial-gradient(circle at 30% 30%, rgba(var(--red-rgb), .45) 0%, rgba(var(--red-rgb), 0) 40%),
+    radial-gradient(circle at 70% 70%, rgba(var(--red-deep-rgb), .6) 0%, rgba(var(--red-deep-rgb), 0) 45%);
   animation: aurora 14s ease-in-out infinite alternate;
   pointer-events: none;
 }
@@ -307,12 +312,12 @@ input::placeholder, textarea::placeholder { color: rgba(242, 236, 228, .4); }
 }
 .hero-blob.a {
   left: 20%; top: 60%; width: 60cqmax; height: 60cqmax;
-  background: radial-gradient(circle, rgba(210, 20, 31, .35) 0%, rgba(210, 20, 31, 0) 60%);
+  background: radial-gradient(circle, rgba(var(--red-rgb), .35) 0%, rgba(var(--red-rgb), 0) 60%);
   animation: blob 18s ease-in-out infinite alternate;
 }
 .hero-blob.b {
   right: 10%; top: -20%; width: 50cqmax; height: 50cqmax;
-  background: radial-gradient(circle, rgba(210, 20, 31, .25) 0%, rgba(210, 20, 31, 0) 60%);
+  background: radial-gradient(circle, rgba(var(--red-rgb), .25) 0%, rgba(var(--red-rgb), 0) 60%);
   animation: blob 22s 3s ease-in-out infinite alternate-reverse;
 }
 
@@ -425,8 +430,8 @@ input::placeholder, textarea::placeholder { color: rgba(242, 236, 228, .4); }
   animation: none;
 }
 .names .amp-row i { flex: 1; height: 1px; animation: opFade .29s 2.29s both; }
-.names .amp-row i:first-child { background: linear-gradient(90deg, transparent, rgba(210, 20, 31, .7)); }
-.names .amp-row i:last-child  { background: linear-gradient(270deg, transparent, rgba(210, 20, 31, .7)); }
+.names .amp-row i:first-child { background: linear-gradient(90deg, transparent, rgba(var(--red-rgb), .7)); }
+.names .amp-row i:last-child  { background: linear-gradient(270deg, transparent, rgba(var(--red-rgb), .7)); }
 .names .amp-row span {
   position: relative;
   animation: opAnd .52s 1.13s cubic-bezier(.4, 0, .2, 1) both;
@@ -533,7 +538,7 @@ input::placeholder, textarea::placeholder { color: rgba(242, 236, 228, .4); }
   aspect-ratio: 1;
   transform: translate(-50%, -50%);
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(210, 20, 31, .22) 0%, rgba(210, 20, 31, 0) 60%);
+  background: radial-gradient(circle, rgba(var(--red-rgb), .22) 0%, rgba(var(--red-rgb), 0) 60%);
   pointer-events: none;
 }
 
@@ -662,7 +667,7 @@ input::placeholder, textarea::placeholder { color: rgba(242, 236, 228, .4); }
   width: 0%;
   background: linear-gradient(90deg, var(--red) 0%, var(--red) 85%, var(--cream) 100%);
   transition: width .25s linear;
-  box-shadow: 0 0 18px rgba(210, 20, 31, .7);
+  box-shadow: 0 0 18px rgba(var(--red-rgb), .7);
 }
 .story-item {
   flex: 0 0 min(78cqw, 360px);
@@ -680,7 +685,7 @@ input::placeholder, textarea::placeholder { color: rgba(242, 236, 228, .4); }
   display: flex; align-items: center; justify-content: center;
 }
 .story-dot i { width: 7px; height: 7px; border-radius: 50%; background: var(--red); display: block; }
-.story-dot.now { background: var(--red); border: 0; box-shadow: 0 0 0 6px rgba(210, 20, 31, .25); }
+.story-dot.now { background: var(--red); border: 0; box-shadow: 0 0 0 6px rgba(var(--red-rgb), .25); }
 .story-year { font-family: var(--serif); font-size: clamp(44px, 7cqw, 84px); line-height: .9; letter-spacing: -.04em; color: var(--cream); }
 .story-when { font-size: 9px; letter-spacing: .28em; text-transform: uppercase; color: var(--mute); }
 .story-title { font-family: var(--serif); font-style: italic; font-size: clamp(26px, 3.6cqw, 44px); line-height: 1; color: var(--red); }
@@ -739,7 +744,7 @@ input::placeholder, textarea::placeholder { color: rgba(242, 236, 228, .4); }
   aspect-ratio: 1;
   transform: translate(-50%, -50%);
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(210, 20, 31, .35) 0%, rgba(210, 20, 31, 0) 55%);
+  background: radial-gradient(circle, rgba(var(--red-rgb), .35) 0%, rgba(var(--red-rgb), 0) 55%);
   pointer-events: none;
 }
 .split {
@@ -806,7 +811,7 @@ input::placeholder, textarea::placeholder { color: rgba(242, 236, 228, .4); }
 /* ---------------------------------------------------------------- rsvp --- */
 
 .rsvp { position: relative; background: var(--cream); color: var(--ink); padding: clamp(96px, 14cqw, 200px) var(--pad); overflow: hidden; }
-.rsvp .amp { left: -4cqw; bottom: -18cqw; -webkit-text-stroke: 1px rgba(210, 20, 31, .35); }
+.rsvp .amp { left: -4cqw; bottom: -18cqw; -webkit-text-stroke: 1px rgba(var(--red-rgb), .35); }
 .rsvp .h2 { font-size: clamp(52px, 9cqw, 130px); line-height: .88; }
 
 .ticket-wrap { position: relative; justify-self: center; width: 100%; max-width: 460px; perspective: 1400px; }
@@ -969,7 +974,7 @@ input::placeholder, textarea::placeholder { color: rgba(242, 236, 228, .4); }
   background: var(--red);
   display: flex; align-items: center; justify-content: center;
   font-family: var(--serif); font-style: italic; font-size: 34px; color: var(--cream);
-  box-shadow: 0 0 0 6px var(--ink), 0 0 0 7px rgba(210, 20, 31, .6);
+  box-shadow: 0 0 0 6px var(--ink), 0 0 0 7px rgba(var(--red-rgb), .6);
   animation: stamp .6s cubic-bezier(.2, 1.4, .4, 1) both;
 }
 #done-name { font-family: var(--serif); font-style: italic; font-size: clamp(32px, 4.4cqw, 48px); line-height: 1; color: var(--cream); overflow: hidden; }
@@ -1127,14 +1132,14 @@ input::placeholder, textarea::placeholder { color: rgba(242, 236, 228, .4); }
   height: 8px;
   border-radius: 50%;
   background: var(--cream);
-  box-shadow: 0 0 18px 4px rgba(210, 20, 31, .9), 0 0 40px 10px rgba(210, 20, 31, .5);
+  box-shadow: 0 0 18px 4px rgba(var(--red-rgb), .9), 0 0 40px 10px rgba(var(--red-rgb), .5);
   animation: opIdle 2.6s ease-in-out infinite;
 }
 .op-halo {
   width: 60px;
   height: 60px;
   border-radius: 50%;
-  border: 1px solid rgba(210, 20, 31, .6);
+  border: 1px solid rgba(var(--red-rgb), .6);
   opacity: .6;
   animation: opRing 2.6s ease-out infinite;
 }
@@ -1161,7 +1166,7 @@ input::placeholder, textarea::placeholder { color: rgba(242, 236, 228, .4); }
   bottom: 0;
   width: 1px;
   background: linear-gradient(180deg, transparent, var(--cream) 20%, var(--cream) 80%, transparent);
-  box-shadow: 0 0 12px rgba(210, 20, 31, .9);
+  box-shadow: 0 0 12px rgba(var(--red-rgb), .9);
   transform-origin: 50% var(--op-y, 50%);
   transform: scaleY(0);
   pointer-events: none;
@@ -1172,7 +1177,7 @@ input::placeholder, textarea::placeholder { color: rgba(242, 236, 228, .4); }
   top: 0;
   bottom: 0;
   width: 60px;
-  background: radial-gradient(ellipse at center, rgba(210, 20, 31, .35), transparent 70%);
+  background: radial-gradient(ellipse at center, rgba(var(--red-rgb), .35), transparent 70%);
   opacity: 0;
   pointer-events: none;
 }
@@ -1187,7 +1192,7 @@ input::placeholder, textarea::placeholder { color: rgba(242, 236, 228, .4); }
   transform-origin: center;
   transform: translateY(-50%) scaleX(0);
   background: linear-gradient(90deg, transparent, var(--red) 12%, #E2303B 50%, var(--red) 88%, transparent);
-  box-shadow: 0 0 30px rgba(210, 20, 31, .7);
+  box-shadow: 0 0 30px rgba(var(--red-rgb), .7);
   pointer-events: none;
 }
 
