@@ -284,8 +284,15 @@
 
   /* ----------------------------------------------------------- скролл --- */
 
+  // Подсказка о прокрутке одноразовая: спрятали — и больше не возвращаем,
+  // даже если гость отлистал обратно наверх. Флаг state.scrolled для этого
+  // не годится, он ходит в обе стороны вместе с плавающей кнопкой.
+  let hintShown = true;
+
   function onScroll() {
     const st = frame.scrollTop, vh = frame.clientHeight;
+
+    if (hintShown && st > 24) { hintShown = false; $('stage').classList.add('scrolled'); }
 
     const sr = $('story-scroll');
     if (sr) {

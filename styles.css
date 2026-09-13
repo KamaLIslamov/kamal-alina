@@ -78,6 +78,7 @@ input::placeholder, textarea::placeholder { color: rgba(242, 236, 228, .4); }
 @keyframes opAndGlow  { 0% { opacity: 0 } 39% { opacity: 1 } 100% { opacity: 0 } }
 @keyframes opAnd      { from { clip-path: inset(-20% 100% -20% 0); filter: blur(2px) } to { clip-path: inset(-20% 0 -20% 0); filter: blur(0) } }
 @keyframes growY      { from { transform: scaleY(0) }                       to { transform: scaleY(1) } }
+@keyframes stemDrip   { 0% { transform: translateY(-20px); opacity: 0 } 14%, 44% { opacity: 1 } 58%, 100% { transform: translateY(64px); opacity: 0 } }
 @keyframes sheen      { 0% { background-position: 120% 0 } 50%, 100% { background-position: -20% 0 } }
 @keyframes shimmer    { 0%, 100% { background-position: 100% 0 } 50% { background-position: 0% 0 } }
 @keyframes flow       { from { background-position: 0 100% } to { background-position: 0 0% } }
@@ -473,12 +474,52 @@ input::placeholder, textarea::placeholder { color: rgba(242, 236, 228, .4); }
   transform: rotate(-6deg);
 }
 
+/* Подсказка о прокрутке. Отдельной стрелки в кадре нет: штрих под
+   именами и так указывал вниз — теперь по нему стекает светлое пятно,
+   а под ним стоит слово. Оба гаснут, едва гость тронул страницу:
+   дальше подсказка только мешала бы. */
+.hero-scroll {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  transition: opacity .5s var(--ease);
+}
+#stage.scrolled .hero-scroll { opacity: 0; pointer-events: none; }
+
 .hero-stem {
+  position: relative;
   width: 1px;
   height: 64px;
   background: var(--red);
   transform-origin: top;
   animation: growY .32s 2.29s var(--ease) both;
+}
+
+/* Пятно — отдельный слой: на самом штрихе уже висит growY, и второй
+   анимации трансформа он бы не вынес. Стартует после того, как штрих
+   дорос, и держит длинную паузу между проходами, чтобы движение не
+   мельтешило в углу глаза. */
+.hero-stem::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1px;
+  height: 20px;
+  opacity: 0;
+  background: linear-gradient(180deg, transparent, var(--cream), transparent);
+  animation: stemDrip 3.6s 2.9s var(--ease) infinite;
+}
+
+.hero-hint {
+  font-size: 10px;
+  letter-spacing: .34em;
+  text-transform: uppercase;
+  /* Тише соседней панели, но не на грани различимости: на .42 слово
+     давало 2,1:1 против её 6,5:1 и терялось поверх фоновой «22». */
+  color: rgba(242, 236, 228, .62);
+  animation: opFade .56s 2.72s both;
 }
 
 /* ------------------------------------------------------------- marquee --- */
