@@ -713,6 +713,16 @@ input::placeholder, textarea::placeholder { color: rgba(242, 236, 228, .4); }
   color: var(--red);
 }
 
+/* Адрес цепляется прямо к названию, как адресная строка на печатном
+   приглашении: тот же гарамон, что у описания ниже, только мельче. */
+.place-addr {
+  font-family: var(--garamond);
+  font-style: italic;
+  font-size: clamp(18px, 1.9cqw, 24px);
+  line-height: 1.2;
+  color: var(--ink-soft);
+}
+
 /* --------------------------------------------------------------- story --- */
 
 .story { position: relative; padding: clamp(96px, 14cqw, 200px) var(--pad); overflow: hidden; background: var(--ink); }

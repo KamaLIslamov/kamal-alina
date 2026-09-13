@@ -535,6 +535,10 @@
     x.letterSpacing = '-2px'; x.fillText('22 октября', 80, 1430); x.fillText('Versal', 560, 1430);
     x.fillStyle = '#A9A29A'; x.font = 'italic 40px "Cormorant Garamond", Georgia, serif';
     x.letterSpacing = '0px'; x.fillText('2026, четверг, 16:00', 80, 1490); x.fillText('ресторан, Бишкек', 560, 1490);
+    // Адрес — на сохранённом билете он полезнее всего: его смотрят в день
+    // свадьбы, уже не открывая сайт.
+    x.font = 'italic 36px "Cormorant Garamond", Georgia, serif';
+    x.fillText('проспект Победы, 323', 560, 1545);
 
     x.beginPath(); x.arc(W - 200, 1720, 110, 0, 6.283); x.fillStyle = '#8C1130'; x.fill();
     x.fillStyle = '#F2ECE4'; x.font = 'italic 78px "Playfair Display", Georgia, serif';
